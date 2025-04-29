@@ -12,15 +12,15 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    // Check for saved theme in localStorage
+    
     const savedTheme = localStorage.getItem('theme');
-    // Check for system preference
+    
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // Return saved theme if it exists, otherwise use system preference
+    
     return (savedTheme as Theme) || (prefersDark ? 'dark' : 'light');
   });
 
-  // Update localStorage and document class when theme changes
+  
   useEffect(() => {
     localStorage.setItem('theme', theme);
     if (theme === 'dark') {
@@ -30,7 +30,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, [theme]);
 
-  // Handle system theme preference changes
+  
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
@@ -43,7 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Set up keyboard shortcut for toggling theme
+  
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (e.altKey && e.key === 't') {
