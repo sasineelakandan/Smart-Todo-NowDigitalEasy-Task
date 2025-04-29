@@ -18,6 +18,8 @@ const Index = () => {
     addTodo,
     toggleTodo,
     deleteTodo,
+    editTodo,
+    reorderTodos,
     filter,
     setFilter,
     categoryFilter,
@@ -43,7 +45,7 @@ const Index = () => {
             </div>
           </div>
           
-          <Card>
+          <Card className="shadow-lg border-opacity-50 hover:shadow-xl transition-all duration-300">
             <CardHeader className="pb-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <CardTitle>Your Tasks</CardTitle>
@@ -74,11 +76,13 @@ const Index = () => {
                 
                 <Separator className="my-4" />
                 
-                <div className="h-[500px] overflow-y-auto pr-1 scrollbar-hide">
+                <div className="h-[500px] overflow-y-auto pr-1 scrollbar-hide rounded-md">
                   <TodoList
                     todos={todos}
                     onToggle={toggleTodo}
                     onDelete={deleteTodo}
+                    onEdit={editTodo}
+                    onReorder={reorderTodos}
                   />
                 </div>
               </div>

@@ -64,14 +64,24 @@ export function useTodos() {
     toast.success('Todo deleted');
   }, []);
 
-  // Update a todo
-  const updateTodo = useCallback((updatedTodo: Todo) => {
+  // Edit a todo's text
+  const editTodo = useCallback((id: string, newText: string) => {
     setTodos(prevTodos =>
       prevTodos.map(todo =>
-        todo.id === updatedTodo.id ? updatedTodo : todo
+        todo.id === id ? { ...todo, text: newText } : todo
       )
     );
     toast.success('Todo updated');
+  }, []);
+
+  // Reorder todos (for drag and drop)
+  const reorderTodos = useCallback((fromIndex: number, toIndex: number) => {
+    setTodos(prevTodos => {
+      const result = Array.from(prevTodos);
+      const [removed] = result.splice(fromIndex, 1);
+      result.splice(toIndex, 0, removed);
+      return result;
+    });
   }, []);
 
   // Filter todos based on current filter state, category filter, and search term
@@ -118,7 +128,8 @@ export function useTodos() {
     addTodo,
     toggleTodo,
     deleteTodo,
-    updateTodo,
+    editTodo,
+    reorderTodos,
     filter,
     setFilter,
     categoryFilter,
