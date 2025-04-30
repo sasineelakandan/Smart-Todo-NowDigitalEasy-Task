@@ -90,8 +90,22 @@ const Index = () => {
           </Card>
           
           <p className="mt-8 text-center text-sm text-muted-foreground">
-            Smart Todo Compass &copy; 2023 - Press <kbd className="px-1 border rounded text-xs">Alt+N</kbd> to add a new todo, <kbd className="px-1 border rounded text-xs">Alt+T</kbd> to toggle theme
-          </p>
+  
+  <a
+    href="https://github.com/sasineelakandan/Smart-Todo-NowDigitalEasy-Task.git"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 font-medium hover:underline"
+  >
+    <img
+      src="https://github.com/sasineelakandan.png"
+      alt="GitHub Avatar"
+      className="w-5 h-5 rounded-full"
+    />
+    Sasi Neelakandan
+  </a>
+</p>
+
         </div>
       </div>
     </ThemeProvider>
