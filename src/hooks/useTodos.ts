@@ -100,7 +100,7 @@ export function useTodos() {
       result = result.filter(todo => todo.category === categoryFilter);
     }
     
-    // Apply search filter if search term is not empty
+    
     if (searchTerm.trim() !== '') {
       const lowerSearchTerm = searchTerm.toLowerCase();
       result = result.filter(todo => 
@@ -111,7 +111,7 @@ export function useTodos() {
     return result;
   }, [todos, filter, categoryFilter, searchTerm]);
 
-  // Set up keyboard shortcut for adding todo
+  
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (e.altKey && e.key === 'n') {
